@@ -90,7 +90,7 @@ export function StickyNav() {
       </div>
 
       <a
-        href="mailto:kanglesoham11@gmail.com"
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=kanglesoham11@gmail.com&su=Reaching%20Out:%20Let's%20Connect!&body=Hi%20Soham,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20was%20really%20impressed%20by%20your%20work.%20I%20would%20love%20to%20connect%20and%20discuss%20a%20potential%20opportunity%20with%20you!%0D%0A%0D%0ABest%20regards,"
         className="snav__cta"
         target="_blank"
         rel="noreferrer"
