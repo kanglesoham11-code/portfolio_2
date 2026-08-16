@@ -166,14 +166,14 @@ const NAV_ITEMS = [
     id: "talk",
     title: "Let’s talk",
     icon: Send,
-    href: "mailto:kanglesoham11@gmail.com",
+    href: "mailto:kanglesoham11@gmail.com?subject=Reaching%20Out:%20Let's%20Connect!&body=Hi%20Soham,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20was%20really%20impressed%20by%20your%20work.%20I%20would%20love%20to%20connect%20and%20discuss%20a%20potential%20opportunity%20with%20you!%0D%0A%0D%0ABest%20regards,",
     content: (
       <div className="flex flex-col space-y-4">
         <div className="text-zinc-700 text-sm">
           Open mail client to send a direct email to kanglesoham11@gmail.com.
         </div>
         <a
-          href="mailto:kanglesoham11@gmail.com"
+          href="mailto:kanglesoham11@gmail.com?subject=Reaching%20Out:%20Let's%20Connect!&body=Hi%20Soham,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20was%20really%20impressed%20by%20your%20work.%20I%20would%20love%20to%20connect%20and%20discuss%20a%20potential%20opportunity%20with%20you!%0D%0A%0D%0ABest%20regards,"
           target="_blank"
           rel="noreferrer"
           className="relative h-8 w-full scale-100 select-none appearance-none flex items-center justify-center rounded-lg border border-zinc-950/10 px-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98]"
