@@ -3,7 +3,7 @@ import Groq from "groq-sdk";
 
 // Initialize Groq client
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
+  apiKey: process.env.GROQ_API_KEY || "dummy_key_for_build",
 });
 
 const SYSTEM_PROMPT = `You are "Mini Soham", a helpful, friendly, and brief AI assistant representing Soham Kangle, a Data Engineering & AI Architect. 
