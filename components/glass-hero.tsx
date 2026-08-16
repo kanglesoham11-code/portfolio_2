@@ -200,13 +200,13 @@ export function GlassHero() {
               <a href="#about">About</a>
             </li>
             <li>
+              <a href="#skills">Skills</a>
+            </li>
+            <li>
               <a href="#work">Work</a>
             </li>
             <li>
-              <a href="#process">Process</a>
-            </li>
-            <li>
-              <a href="#experiments">Experiments</a>
+              <a href="#journey">Journey</a>
             </li>
           </ul>
 
