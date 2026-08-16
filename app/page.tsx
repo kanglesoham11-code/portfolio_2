@@ -1,6 +1,7 @@
 import { GlassHero } from "@/components/glass-hero";
 import { StickyNav } from "@/components/sticky-nav";
 import { NavDock } from "@/components/nav-dock";
+import { MiniSoham } from "@/components/mini-soham";
 import { AboutSection } from "@/components/about-section";
 import { CertificateInfiniteSlider } from "@/components/certificate-infinite-slider";
 import { SkillsSection } from "@/components/skills-section";
@@ -22,6 +23,7 @@ export default function Home() {
       <AchievementsSection />
       <EducationSection />
       <ContactSection />
+      <MiniSoham />
     </main>
   );
 }
