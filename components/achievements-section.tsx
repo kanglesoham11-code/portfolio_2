@@ -34,7 +34,7 @@ export function AchievementsSection() {
   return (
     <section id="journey" className="portfolio-section">
       <SectionHeader
-        number="04"
+        number="05"
         title="Achievements"
         subtitle="Recognition and milestones"
       />

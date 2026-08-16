@@ -6,7 +6,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="portfolio-section contact-section">
       <ScrollReveal>
-        <p className="contact__label">06 — CONNECT</p>
+        <p className="contact__label">08 — CONNECT</p>
         <h2 className="contact__heading">
           Let&rsquo;s build
           <br />

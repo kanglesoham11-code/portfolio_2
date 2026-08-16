@@ -15,7 +15,7 @@ const COURSEWORK = [
 export function EducationSection() {
   return (
     <section className="portfolio-section">
-      <SectionHeader number="05" title="Education" />
+      <SectionHeader number="06" title="Education" />
 
       <ScrollReveal className="edu-card">
         <div className="edu-card__header">

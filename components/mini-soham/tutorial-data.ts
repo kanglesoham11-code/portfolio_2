@@ -22,7 +22,15 @@ export const TUTORIAL_DATA: Record<string, string[]> = {
     "DevOps & APIs.",
     "I don't just collect technologies.",
     "I build systems with them.",
-    "Ready to see what I've actually built?"
+    "Ready to see where I've applied them?"
+  ],
+  experience: [
+    "Here is where I put those skills to work in the real world.",
+    "At Bluestock Fintech, I accelerated reporting by 30% through optimized pipelines.",
+    "For GirlScript Summer of Code, I contributed to tools used by over 10,000 developers.",
+    "And at inAmigos Foundation, I drove a 40% lift in engagement.",
+    "Real impact. Real systems.",
+    "Let's look at the projects next."
   ],
   work: [
     // 0-15% (Approx 1-4)

@@ -11,6 +11,7 @@ const DESKTOP_POSITIONS = {
   about: { opacity: 1, x: "32vw", y: "-5vh", scale: 1, rotateY: -10 },
   skills: { opacity: 1, x: "-32vw", y: "-2vh", scale: 0.9, rotateY: 10 },
   work: { opacity: 1, x: "32vw", y: "5vh", scale: 1.15, rotateY: -15 }, // WOW moment
+  experience: { opacity: 1, x: "32vw", y: "-5vh", scale: 0.9, rotateY: -10 },
   journey: { opacity: 1, x: "32vw", y: "-5vh", scale: 0.9, rotateY: -10 }, // Anchor Right
   education: { opacity: 1, x: "32vw", y: "0vh", scale: 0.9, rotateY: -10 }, // Anchor Right
   contact: { opacity: 1, x: "32vw", y: "-5vh", scale: 1.1, rotateY: -10 }, // Anchor Right
@@ -21,6 +22,7 @@ const MOBILE_POSITIONS = {
   about: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
   skills: { opacity: 1, x: "-25vw", y: "25vh", scale: 0.6, rotateY: 5 },
   work: { opacity: 1, x: "25vw", y: "20vh", scale: 0.7, rotateY: -10 },
+  experience: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
   journey: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
   education: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
   contact: { opacity: 1, x: "25vw", y: "20vh", scale: 0.7, rotateY: -5 },
@@ -45,7 +47,7 @@ export function MiniSoham() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const ids = ["about", "skills", "work", "journey", "education", "contact"];
+          const ids = ["about", "skills", "experience", "work", "journey", "education", "contact"];
           let newActive: keyof typeof DESKTOP_POSITIONS = "hidden";
           let activeRect: DOMRect | null = null;
 
@@ -112,7 +114,7 @@ export function MiniSoham() {
   let bubblePosition: "left" | "right" | "top" = "left";
   if (activeSection === "skills") {
     bubblePosition = "right";
-  } else if (["journey", "education", "contact"].includes(activeSection)) {
+  } else if (["experience", "journey", "education", "contact"].includes(activeSection)) {
     bubblePosition = "left"; 
   }
 

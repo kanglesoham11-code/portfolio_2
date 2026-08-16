@@ -19,7 +19,7 @@ export function CertificatesSection() {
 
   return (
     <section id="certificates" className="portfolio-section pb-16 md:pb-24">
-      <SectionHeader number="06" title="Certificates" />
+      <SectionHeader number="07" title="Certificates" subtitle="Continuous Learning & Credentials" />
 
       <div className="mt-12 md:mt-16 w-full max-w-[100vw] overflow-hidden">
         <InfiniteSlider speed={60} speedOnHover={20} gap={24}>

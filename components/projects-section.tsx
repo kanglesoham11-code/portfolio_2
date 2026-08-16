@@ -100,7 +100,7 @@ export function ProjectsSection() {
   return (
     <section id="work" className="portfolio-section">
       <SectionHeader
-        number="03"
+        number="04"
         title="Selected Work"
         subtitle="Engineering production-grade systems"
       />

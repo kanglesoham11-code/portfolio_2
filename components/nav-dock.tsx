@@ -11,6 +11,7 @@ import {
   Mail,
   Send,
   Award,
+  Briefcase,
 } from "lucide-react";
 import { Dock, DockIcon, DockItem, DockLabel } from "@/components/core/dock";
 import useClickOutside from "@/hooks/useClickOutside";
@@ -29,7 +30,7 @@ const NAV_ITEMS = [
     href: "#about",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-col space-y-1 text-zinc-700 dark:text-zinc-300">
+        <div className="flex flex-col space-y-1 text-zinc-700">
           <span className="font-medium text-base">Soham Kangle</span>
           <span className="text-sm">Data Engineering & AI Architect</span>
         </div>
@@ -49,7 +50,7 @@ const NAV_ITEMS = [
     href: "#skills",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="text-zinc-700 dark:text-zinc-300 text-sm">
+        <div className="text-zinc-700 text-sm">
           Core competencies in Distributed Systems, Pipelines, and Vector DBs.
         </div>
         <a
@@ -62,13 +63,32 @@ const NAV_ITEMS = [
     ),
   },
   {
+    id: "experience",
+    title: "Experience",
+    icon: Briefcase,
+    href: "#experience",
+    content: (
+      <div className="flex flex-col space-y-4">
+        <div className="text-zinc-700 text-sm">
+          Professional roles in Data Analytics & Product Growth.
+        </div>
+        <a
+          href="#experience"
+          className="relative h-8 w-full scale-100 select-none appearance-none flex items-center justify-center rounded-lg border border-zinc-950/10 px-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98]"
+        >
+          View Experience
+        </a>
+      </div>
+    ),
+  },
+  {
     id: "work",
     title: "Work",
     icon: FolderKanban,
     href: "#work",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-col text-zinc-700 dark:text-zinc-300 text-sm">
+        <div className="flex flex-col text-zinc-700 text-sm">
           <div className="space-y-1">
             <div>HIREPATH_AI.prod</div>
             <div>Identity_Network.sys</div>
@@ -91,7 +111,7 @@ const NAV_ITEMS = [
     href: "#journey",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="text-zinc-700 dark:text-zinc-300 text-sm">
+        <div className="text-zinc-700 text-sm">
           GUVi National Hackathon Finalist and Open Source Contributor.
         </div>
         <a
@@ -110,7 +130,7 @@ const NAV_ITEMS = [
     href: "#certificates",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="flex flex-col text-zinc-700 dark:text-zinc-300 text-sm">
+        <div className="flex flex-col text-zinc-700 text-sm">
           <span>10+ Professional Certifications</span>
           <span className="text-zinc-500">Cloud & Data Engineering</span>
         </div>
@@ -130,7 +150,7 @@ const NAV_ITEMS = [
     href: "#contact",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="text-zinc-700 dark:text-zinc-300 text-sm">
+        <div className="text-zinc-700 text-sm">
           Ready to architect scalable solutions? Let's connect.
         </div>
         <a
@@ -149,7 +169,7 @@ const NAV_ITEMS = [
     href: "mailto:kanglesoham11@gmail.com",
     content: (
       <div className="flex flex-col space-y-4">
-        <div className="text-zinc-700 dark:text-zinc-300 text-sm">
+        <div className="text-zinc-700 text-sm">
           Open mail client to send a direct email to kanglesoham11@gmail.com.
         </div>
         <a
