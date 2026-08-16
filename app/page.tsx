@@ -3,11 +3,11 @@ import { StickyNav } from "@/components/sticky-nav";
 import { NavDock } from "@/components/nav-dock";
 import { MiniSoham } from "@/components/mini-soham";
 import { AboutSection } from "@/components/about-section";
-import { CertificateInfiniteSlider } from "@/components/certificate-infinite-slider";
 import { SkillsSection } from "@/components/skills-section";
 import { ProjectsSection } from "@/components/projects-section";
 import { AchievementsSection } from "@/components/achievements-section";
 import { EducationSection } from "@/components/education-section";
+import { CertificatesSection } from "@/components/certificates-section";
 import { ContactSection } from "@/components/contact-section";
 
 export default function Home() {
@@ -16,12 +16,12 @@ export default function Home() {
       <GlassHero />
       <StickyNav />
       <NavDock />
-      <CertificateInfiniteSlider />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
       <AchievementsSection />
       <EducationSection />
+      <CertificatesSection />
       <ContactSection />
       <MiniSoham />
     </main>

@@ -12,9 +12,15 @@ const ACHIEVEMENTS = [
   },
   {
     year: "2025",
-    title: "Agentic AI Hackathon — Competitor",
+    title: "Agentic AI Workshop — Winner",
     description:
       "Presented the production-grade HIREPATH 5-agent data pipeline system in live technical evaluations; demonstrated stateful LangGraph orchestration as an alternative to conventional single-step LLM architectures.",
+  },
+  {
+    year: "2026",
+    title: "Speaker, SparkTech International Symposium 2K26",
+    description:
+      "Presented insights and technical deep dives at the international symposium, recognized as a top academic performer in Algorithms & DBMS.",
   },
   {
     year: "Ongoing",

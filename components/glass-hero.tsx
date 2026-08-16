@@ -233,7 +233,7 @@ export function GlassHero() {
           platforms.
         </p>
         <a
-          href="https://github.com/SohamKangle"
+          href="https://github.com/kanglesoham11-code"
           className="hero__btn"
           target="_blank"
           rel="noreferrer"

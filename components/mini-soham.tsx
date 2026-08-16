@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { TUTORIAL_DATA } from "./mini-soham/tutorial-data";
 import { MiniSohamDialogue } from "./mini-soham/mini-soham-dialogue";
+import { ChatBox } from "./mini-soham/chat-box";
 
 const DESKTOP_POSITIONS = {
   hidden: { opacity: 0, x: "0vw", y: "60vh", scale: 0.5, rotateY: 0 },
@@ -17,18 +18,19 @@ const DESKTOP_POSITIONS = {
 
 const MOBILE_POSITIONS = {
   hidden: { opacity: 0, x: "0vw", y: "50vh", scale: 0.4, rotateY: 0 },
-  about: { opacity: 1, x: "25vw", y: "-35vh", scale: 0.6, rotateY: -5 },
-  skills: { opacity: 1, x: "-25vw", y: "-35vh", scale: 0.6, rotateY: 5 },
-  work: { opacity: 1, x: "25vw", y: "-40vh", scale: 0.7, rotateY: -10 },
-  journey: { opacity: 1, x: "25vw", y: "-35vh", scale: 0.6, rotateY: -5 },
-  education: { opacity: 1, x: "25vw", y: "-35vh", scale: 0.6, rotateY: -5 },
-  contact: { opacity: 1, x: "25vw", y: "-30vh", scale: 0.7, rotateY: -5 },
+  about: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
+  skills: { opacity: 1, x: "-25vw", y: "25vh", scale: 0.6, rotateY: 5 },
+  work: { opacity: 1, x: "25vw", y: "20vh", scale: 0.7, rotateY: -10 },
+  journey: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
+  education: { opacity: 1, x: "25vw", y: "25vh", scale: 0.6, rotateY: -5 },
+  contact: { opacity: 1, x: "25vw", y: "20vh", scale: 0.7, rotateY: -5 },
 };
 
 export function MiniSoham() {
   const [activeSection, setActiveSection] = useState<keyof typeof DESKTOP_POSITIONS>("hidden");
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -138,9 +140,12 @@ export function MiniSoham() {
             }}
             src="/images/soham_clone.png"
             alt="Mini Soham Guide"
-            className="w-[22vh] md:w-[32vh] h-auto object-contain relative z-10 select-none pointer-events-none"
+            onClick={() => setIsChatOpen((prev) => !prev)}
+            className="w-[22vh] md:w-[32vh] h-auto object-contain relative z-10 select-none pointer-events-auto cursor-pointer drop-shadow-xl hover:scale-105 transition-transform"
             draggable={false}
           />
+
+          <ChatBox isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} position={bubblePosition} />
 
           <MiniSohamDialogue 
             message={currentMessage} 
