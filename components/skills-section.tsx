@@ -2,72 +2,7 @@
 
 import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader } from "./section-header";
-import { Dock, DockIcon, DockItem, DockLabel } from "@/components/core/dock";
-
-/* ── abbreviation helper ── */
-const ABBREV: Record<string, string> = {
-  Python: "Py",
-  SQL: "SQL",
-  JavaScript: "JS",
-  TypeScript: "TS",
-  "C++": "C++",
-  Java: "Ja",
-  "ETL / ELT Pipeline Design": "ETL",
-  "Data Warehousing": "DW",
-  "Data Modeling": "DM",
-  "Schema Design": "SD",
-  "Batch & Stream Processing": "BSP",
-  "Data Quality Monitoring": "DQM",
-  PostgreSQL: "PG",
-  MySQL: "My",
-  ChromaDB: "Ch",
-  DynamoDB: "Dy",
-  "SQL Optimization": "SO",
-  "Data Lake Architecture": "DLA",
-  "Amazon S3": "S3",
-  "AWS Glue": "Gl",
-  "Amazon Redshift": "RS",
-  "AWS Lambda": "λ",
-  "Amazon Athena": "Ath",
-  "Cloud Pipeline Automation": "CPA",
-  FastAPI: "FA",
-  "Apache Kafka": "Kf",
-  Pandas: "Pd",
-  NumPy: "Np",
-  LangGraph: "LG",
-  React: "Re",
-  "Node.js": "No",
-  "Next.js": "Nx",
-  Streamlit: "St",
-  "OpenAI Agents SDK": "AI",
-  "Groq LLaMA 3.3 70B": "LLM",
-  "Multi-Agent Orchestration": "MAO",
-  RAG: "RAG",
-  "Semantic Search": "SS",
-  "Prompt Engineering": "PE",
-  "ElevenLabs TTS": "TTS",
-  Git: "Git",
-  "REST API Design": "API",
-  WebSockets: "WS",
-  "DuckDuckGo API": "DDG",
-  "Stripe API": "Str",
-  "Distributed Systems": "DS",
-  "Stateful Pipeline Orchestration": "SPO",
-  "Real-Time Event Processing": "RTE",
-  "Full-Stack Development": "FS",
-};
-
-function abbrev(name: string): string {
-  if (ABBREV[name]) return ABBREV[name];
-  const words = name.split(/[\s/]+/);
-  if (words.length > 1)
-    return words
-      .map((w) => w[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 3);
-  return name.slice(0, 2).toUpperCase();
-}
+import { Dock, DockIcon, DockItem } from "@/components/core/dock";
 
 /* ── skill data (unchanged from resume) ── */
 const SKILLS = [
@@ -169,16 +104,16 @@ export function SkillsSection() {
           <ScrollReveal key={category.name} delay={i * 70}>
             <h3 className="skill-card__name">{category.name}</h3>
             <div className="skill-dock-wrap">
-              <Dock magnification={56} distance={100}>
+              <Dock magnification={64} distance={110} className="flex-wrap items-center justify-center py-4">
                 {category.items.map((item) => (
                   <DockItem
                     key={item}
-                    className="aspect-square rounded-full bg-[rgba(237,245,255,0.75)]"
+                    isTextPill={true}
+                    className="rounded-full bg-[rgba(237,245,255,0.75)] shadow-sm hover:bg-[rgba(255,255,255,0.95)]"
                   >
-                    <DockLabel>{item}</DockLabel>
                     <DockIcon>
-                      <span className="select-none font-mono text-[0.5rem] font-medium text-foreground">
-                        {abbrev(item)}
+                      <span className="select-none font-display font-medium text-foreground">
+                        {item}
                       </span>
                     </DockIcon>
                   </DockItem>
@@ -191,3 +126,4 @@ export function SkillsSection() {
     </section>
   );
 }
+

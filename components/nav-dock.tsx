@@ -25,8 +25,8 @@ const NAV_ITEMS = [
 
 export function NavDock() {
   return (
-    <div className="fixed bottom-4 left-1/2 z-[101] max-w-full -translate-x-1/2">
-      <Dock className="items-end pb-3">
+    <div className="fixed bottom-4 left-1/2 z-[101] max-w-[95vw] -translate-x-1/2 overflow-x-auto hide-scrollbar rounded-2xl">
+      <Dock className="items-end pb-3 flex-nowrap w-max">
         {NAV_ITEMS.map((item) => {
           const isExternal = item.href.startsWith("mailto");
           return (

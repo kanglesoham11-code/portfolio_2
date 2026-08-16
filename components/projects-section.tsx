@@ -2,51 +2,7 @@
 
 import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader } from "./section-header";
-import { Dock, DockIcon, DockItem, DockLabel } from "@/components/core/dock";
-
-/* ── abbreviation helper ── */
-const ABBREV: Record<string, string> = {
-  Python: "Py",
-  SQL: "SQL",
-  JavaScript: "JS",
-  TypeScript: "TS",
-  "C++": "C++",
-  Java: "Ja",
-  PostgreSQL: "PG",
-  "AWS S3": "S3",
-  Pandas: "Pd",
-  FastAPI: "FA",
-  LangGraph: "LG",
-  ChromaDB: "Ch",
-  React: "Re",
-  "Groq LLaMA 70B": "LLM",
-  "Groq LLaMA 3.3 70B": "LLM",
-  "Computer Vision": "CV",
-  NoSQL: "NS",
-  "Adversarial AI": "AAI",
-  "Agentic Systems": "AS",
-  "JSON Log Processing": "JLP",
-  "ElevenLabs TTS": "TTS",
-  Streamlit: "St",
-  "OpenAI SDK": "AI",
-  "DuckDuckGo API": "DDG",
-  "Stripe API": "Str",
-  "OpenAI Agents SDK": "AI",
-  WebSockets: "WS",
-  Git: "Git",
-};
-
-function abbrev(name: string): string {
-  if (ABBREV[name]) return ABBREV[name];
-  const words = name.split(/[\s/]+/);
-  if (words.length > 1)
-    return words
-      .map((w) => w[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 3);
-  return name.slice(0, 2).toUpperCase();
-}
+import { Dock, DockIcon, DockItem } from "@/components/core/dock";
 
 /* ── project data (unchanged from resume) ── */
 const PROJECTS = [
@@ -160,16 +116,16 @@ export function ProjectsSection() {
             </div>
 
             <div className="project__dock-wrap">
-              <Dock magnification={52} distance={90}>
+              <Dock magnification={64} distance={110} className="flex-wrap items-center py-2">
                 {project.tech.map((t) => (
                   <DockItem
                     key={t}
-                    className="aspect-square rounded-full bg-[rgba(237,245,255,0.75)]"
+                    isTextPill={true}
+                    className="rounded-full bg-[rgba(237,245,255,0.75)] shadow-sm hover:bg-[rgba(255,255,255,0.95)]"
                   >
-                    <DockLabel>{t}</DockLabel>
                     <DockIcon>
-                      <span className="select-none font-mono text-[0.48rem] font-medium text-foreground">
-                        {abbrev(t)}
+                      <span className="select-none font-display font-medium text-foreground">
+                        {t}
                       </span>
                     </DockIcon>
                   </DockItem>

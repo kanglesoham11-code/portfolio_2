@@ -19,6 +19,7 @@ import React, {
 /* ──────────────── Dock context ──────────────── */
 interface DockContextType {
   mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
   magnification: number;
   distance: number;
 }
@@ -49,13 +50,20 @@ export function Dock({
   children,
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
+  const mouseY = useMotionValue(Infinity);
 
   return (
-    <DockCtx.Provider value={{ mouseX, magnification, distance }}>
+    <DockCtx.Provider value={{ mouseX, mouseY, magnification, distance }}>
       <motion.div
-        onMouseMove={(e) => mouseX.set(e.pageX)}
-        onMouseLeave={() => mouseX.set(Infinity)}
-        className={`mx-auto flex items-end gap-2 rounded-2xl border border-[rgba(170,190,215,0.25)] bg-white/50 px-3 pb-2.5 pt-2.5 backdrop-blur-xl ${className}`}
+        onMouseMove={(e) => {
+          mouseX.set(e.clientX);
+          mouseY.set(e.clientY);
+        }}
+        onMouseLeave={() => {
+          mouseX.set(Infinity);
+          mouseY.set(Infinity);
+        }}
+        className={`mx-auto flex gap-2 rounded-2xl border border-[rgba(170,190,215,0.25)] bg-white/50 px-3 pb-2.5 pt-2.5 backdrop-blur-xl ${className}`}
         role="toolbar"
       >
         {children}
@@ -67,24 +75,36 @@ export function Dock({
 /* ──────────────── DockItem ──────────────── */
 interface DockItemProps {
   className?: string;
+  isTextPill?: boolean;
   children: React.ReactNode;
 }
 
-export function DockItem({ className = "", children }: DockItemProps) {
+export function DockItem({ className = "", isTextPill = false, children }: DockItemProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { mouseX, magnification, distance } = useDock();
+  const { mouseX, mouseY, magnification, distance } = useDock();
   const [hovered, setHovered] = useState(false);
 
-  const distFromMouse = useTransform(mouseX, (val: number) => {
+  const baseSize = 42;
+  const maxMagnification = magnification;
+
+  const distFromMouse = useTransform(mouseX, (x: number) => {
+    const y = mouseY.get();
     const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return distance + 1;
-    return val - rect.x - rect.width / 2;
+    if (!rect || x === Infinity || y === Infinity) return distance + 1;
+    
+    const cx = rect.x + rect.width / 2;
+    const cy = rect.y + rect.height / 2;
+    
+    const dx = x - cx;
+    const dy = y - cy;
+    return Math.sqrt(dx * dx + dy * dy);
   });
 
   const sizeSync = useTransform(
     distFromMouse,
-    [-distance, 0, distance],
-    [40, magnification, 40]
+    [0, distance],
+    [maxMagnification, baseSize],
+    { clamp: true }
   );
 
   const size = useSpring(sizeSync, {
@@ -93,14 +113,46 @@ export function DockItem({ className = "", children }: DockItemProps) {
     damping: 12,
   });
 
+  const fontSize = useTransform(
+    size,
+    [baseSize, maxMagnification],
+    [0.72, 1.1]
+  );
+
+  const paddingX = useTransform(
+    size,
+    [baseSize, maxMagnification],
+    [0.8, 1.5]
+  );
+
+  const style = isTextPill
+    ? {
+        height: size,
+        paddingLeft: paddingX.get() + "rem", // Using raw value or transform
+        paddingRight: paddingX.get() + "rem",
+      }
+    : { width: size, height: size };
+
+  // For framer-motion to interpolate values automatically, we should pass the MotionValues directly to the style prop
+  const motionStyle = isTextPill
+    ? {
+        height: size,
+        paddingLeft: useTransform(paddingX, (v) => `${v}rem`),
+        paddingRight: useTransform(paddingX, (v) => `${v}rem`),
+        fontSize: useTransform(fontSize, (v) => `${v}rem`),
+      }
+    : { width: size, height: size };
+
   return (
     <HoverCtx.Provider value={hovered}>
       <motion.div
         ref={ref}
-        style={{ width: size, height: size }}
+        style={motionStyle}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className={`relative flex aspect-square cursor-pointer items-center justify-center rounded-full ${className}`}
+        className={`relative flex cursor-pointer items-center justify-center rounded-full whitespace-nowrap ${
+          !isTextPill ? "aspect-square" : ""
+        } ${className}`}
       >
         {children}
       </motion.div>
