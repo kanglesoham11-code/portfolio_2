@@ -89,11 +89,7 @@ export function GlassHero() {
       smoothX.current = e.clientX;
       smoothY.current = e.clientY;
       targetRadius.current = isMobile() ? MOBILE_RADIUS : DESKTOP_RADIUS;
-      try {
-        hero.setPointerCapture(e.pointerId);
-      } catch {
-        /* setPointerCapture not supported */
-      }
+      // Removed setPointerCapture so the browser can still handle vertical scrolling on mobile.
     };
 
     const onPointerUp = () => {

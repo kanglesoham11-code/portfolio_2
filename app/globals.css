@@ -47,8 +47,19 @@ body {
   overflow: hidden;
   min-width: 320px;
   height: 100dvh;
-  touch-action: none;
   background: var(--color-background);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero {
+    touch-action: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    touch-action: pan-y;
+  }
 }
 
 /* ─── Portrait layers (base + reveal) ─── */
@@ -353,40 +364,47 @@ body {
     min-height: 42rem;
   }
 
+  .hero__portrait {
+    transform-origin: center 30%;
+    animation: mobilePortraitEntrance 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
   .hero__headline-wrap {
-    top: 15%;
+    top: 14%;
     left: max(1.25rem, env(safe-area-inset-left));
-    width: 62%;
+    width: auto;
+    max-width: 65%;
   }
 
   .hero__headline {
-    font-size: clamp(2.7rem, 12.5vw, 3.8rem);
-    line-height: 0.87;
-    max-width: 320px;
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    line-height: 0.9;
   }
 
   .hero__intro {
-    bottom: calc(max(2rem, env(safe-area-inset-bottom, 1rem)));
+    bottom: calc(max(1.5rem, env(safe-area-inset-bottom, 1rem)));
     left: max(1.25rem, env(safe-area-inset-left));
     right: max(1.25rem, env(safe-area-inset-right));
   }
 
   .hero__intro-text {
     color: #fff;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
     font-size: 0.85rem;
+    max-width: 85%;
   }
 
   .hero__tagline {
-    top: 55%;
-    bottom: auto;
+    top: auto;
+    bottom: calc(max(1.5rem, env(safe-area-inset-bottom, 1rem)) + 7.5rem);
     right: max(1.25rem, env(safe-area-inset-right));
   }
 
   .hero__tagline span {
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-    font-size: 0.62rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    font-size: 0.55rem;
+    line-height: 1.8;
   }
 
   .hero__btn {
@@ -396,6 +414,17 @@ body {
 }
 
 /* ─── Entrance animations ─── */
+@keyframes mobilePortraitEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(3vh) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes portraitIn {
   from {
     opacity: 0;
