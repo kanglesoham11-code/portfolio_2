@@ -747,27 +747,11 @@ html {
   }
 }
 
-/* ─── Skills Grid ─── */
-.skills-grid {
+/* ─── Skills Dock Grid ─── */
+.skills-dock-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-  gap: 1.2rem;
-}
-
-.skill-card {
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(170, 190, 215, 0.25);
-  border-radius: 16px;
-  padding: 1.8rem;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth);
-}
-
-.skill-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
-  border-color: rgba(170, 190, 215, 0.45);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  gap: 2.5rem 1.5rem;
 }
 
 .skill-card__name {
@@ -776,29 +760,16 @@ html {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
-.skill-card__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.skill-dock-wrap {
+  position: relative;
+  width: 100%;
 }
-
-.skill-chip {
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 400;
-  color: var(--color-foreground);
-  background: rgba(237, 245, 255, 0.7);
-  border: 1px solid rgba(170, 190, 215, 0.2);
-  padding: 0.35rem 0.75rem;
-  border-radius: 8px;
-  transition: background 0.25s var(--ease-smooth);
-}
-
-.skill-chip:hover {
-  background: rgba(255, 255, 255, 0.9);
+.skill-dock-wrap .mx-auto {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 /* ─── Projects ─── */
@@ -851,28 +822,13 @@ html {
   margin-top: 0.35rem;
 }
 
-.project__stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.project__dock-wrap {
   margin-bottom: 1.5rem;
   padding-left: 5rem;
 }
-
-.project__tech {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.04em;
-  color: var(--color-foreground);
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(170, 190, 215, 0.25);
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  transition: background 0.3s var(--ease-smooth);
-}
-
-.project__tech:hover {
-  background: rgba(255, 255, 255, 0.85);
+.project__dock-wrap .mx-auto {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .project__points {
@@ -911,7 +867,7 @@ html {
     font-size: 1.8rem;
   }
 
-  .project__stack,
+  .project__dock-wrap,
   .project__points {
     padding-left: 0;
   }

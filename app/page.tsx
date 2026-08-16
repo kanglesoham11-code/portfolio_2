@@ -1,5 +1,6 @@
 import { GlassHero } from "@/components/glass-hero";
 import { StickyNav } from "@/components/sticky-nav";
+import { NavDock } from "@/components/nav-dock";
 import { AboutSection } from "@/components/about-section";
 import { SkillsSection } from "@/components/skills-section";
 import { ProjectsSection } from "@/components/projects-section";
@@ -12,6 +13,7 @@ export default function Home() {
     <main>
       <GlassHero />
       <StickyNav />
+      <NavDock />
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />

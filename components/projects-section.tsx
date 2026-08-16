@@ -2,7 +2,53 @@
 
 import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader } from "./section-header";
+import { Dock, DockIcon, DockItem, DockLabel } from "@/components/core/dock";
 
+/* ── abbreviation helper ── */
+const ABBREV: Record<string, string> = {
+  Python: "Py",
+  SQL: "SQL",
+  JavaScript: "JS",
+  TypeScript: "TS",
+  "C++": "C++",
+  Java: "Ja",
+  PostgreSQL: "PG",
+  "AWS S3": "S3",
+  Pandas: "Pd",
+  FastAPI: "FA",
+  LangGraph: "LG",
+  ChromaDB: "Ch",
+  React: "Re",
+  "Groq LLaMA 70B": "LLM",
+  "Groq LLaMA 3.3 70B": "LLM",
+  "Computer Vision": "CV",
+  NoSQL: "NS",
+  "Adversarial AI": "AAI",
+  "Agentic Systems": "AS",
+  "JSON Log Processing": "JLP",
+  "ElevenLabs TTS": "TTS",
+  Streamlit: "St",
+  "OpenAI SDK": "AI",
+  "DuckDuckGo API": "DDG",
+  "Stripe API": "Str",
+  "OpenAI Agents SDK": "AI",
+  WebSockets: "WS",
+  Git: "Git",
+};
+
+function abbrev(name: string): string {
+  if (ABBREV[name]) return ABBREV[name];
+  const words = name.split(/[\s/]+/);
+  if (words.length > 1)
+    return words
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 3);
+  return name.slice(0, 2).toUpperCase();
+}
+
+/* ── project data (unchanged from resume) ── */
 const PROJECTS = [
   {
     num: "01",
@@ -18,9 +64,9 @@ const PROJECTS = [
       "Stripe API",
     ],
     points: [
-      "Designed and implemented a 4-agent ETL pipeline that autonomously ingests multi-source competitor data (web scraping, API feeds), transforms raw HTML/JSON into structured intelligence reports, and loads outputs into a normalized SQL data store — eliminating ~8 hours/week of manual analyst research.",
+      "Designed and implemented a 4-agent ETL pipeline that autonomously ingests multi-source competitor data (web scraping, API feeds), transforms raw HTML/JSON into structured intelligence reports, and loads outputs into a normalized SQL data store \u2014 eliminating ~8 hours/week of manual analyst research.",
       "Built a data schema for structured competitor records and sales battlecards; automated data quality validation and deduplication checks across ingestion runs to ensure report consistency.",
-      "Architected a full-stack SaaS product with FastAPI backend, React dashboard for data visualization, and Stripe monetization layer — scoped for commercial deployment at subscription scale.",
+      "Architected a full-stack SaaS product with FastAPI backend, React dashboard for data visualization, and Stripe monetization layer \u2014 scoped for commercial deployment at subscription scale.",
     ],
   },
   {
@@ -37,9 +83,9 @@ const PROJECTS = [
       "Groq LLaMA 70B",
     ],
     points: [
-      "Architected a 5-stage stateful data pipeline (SCOUT → SCREEN → ENGAGE → COORD → TRACK) using LangGraph orchestration; each stage ingests, transforms, and persists structured candidate records — replacing fragile single-prompt LLM calls with a fault-tolerant, multi-step data workflow.",
+      "Architected a 5-stage stateful data pipeline (SCOUT \u2192 SCREEN \u2192 ENGAGE \u2192 COORD \u2192 TRACK) using LangGraph orchestration; each stage ingests, transforms, and persists structured candidate records \u2014 replacing fragile single-prompt LLM calls with a fault-tolerant, multi-step data workflow.",
       "Built a FastAPI backend with ChromaDB vector storage and SQL-backed candidate profiles, enabling semantic candidate-to-role matching via embedding similarity search; processed a 50-candidate dataset with near-zero manual screening overhead.",
-      "Developed a React frontend with real-time WebSocket pipeline visibility, parallelizing sourcing, screening, and scheduling stages — reducing end-to-end recruitment cycle time by an estimated 60%.",
+      "Developed a React frontend with real-time WebSocket pipeline visibility, parallelizing sourcing, screening, and scheduling stages \u2014 reducing end-to-end recruitment cycle time by an estimated 60%.",
     ],
   },
   {
@@ -71,9 +117,9 @@ const PROJECTS = [
       "JSON Log Processing",
     ],
     points: [
-      "Engineered a proactive adversarial AI agent that autonomously collects, parses, and stores Indicators of Compromise (IOC) data from attacker interactions into structured threat-intelligence logs for downstream analysis — enabling passive, real-time data harvesting from live cyber threats.",
+      "Engineered a proactive adversarial AI agent that autonomously collects, parses, and stores Indicators of Compromise (IOC) data from attacker interactions into structured threat-intelligence logs for downstream analysis \u2014 enabling passive, real-time data harvesting from live cyber threats.",
       "Simulated multi-persona attacker engagement, increasing average session duration while capturing structured IOC records (IP addresses, phishing URLs, social-engineering patterns) in machine-readable format.",
-      "GUVi National Hackathon Finalist (2024–25) — selected among top student teams nationally for a novel application of agentic AI in offensive cyber defense.",
+      "GUVi National Hackathon Finalist (2024\u201325) \u2014 selected among top student teams nationally for a novel application of agentic AI in offensive cyber defense.",
     ],
   },
   {
@@ -89,7 +135,7 @@ const PROJECTS = [
     ],
     points: [
       "Developed a real-time voice support agent integrating Groq LLM inference with ElevenLabs TTS; maintained full stateful conversation context (multi-turn session state stored in structured in-memory data structures) across extended support sessions.",
-      "Resolved critical async/event-loop conflicts and SDK API mismatches to achieve production-grade streaming stability — delivering sub-second end-to-end voice response latency.",
+      "Resolved critical async/event-loop conflicts and SDK API mismatches to achieve production-grade streaming stability \u2014 delivering sub-second end-to-end voice response latency.",
     ],
   },
 ];
@@ -113,12 +159,22 @@ export function ProjectsSection() {
               </div>
             </div>
 
-            <div className="project__stack">
-              {project.tech.map((t) => (
-                <span key={t} className="project__tech">
-                  {t}
-                </span>
-              ))}
+            <div className="project__dock-wrap">
+              <Dock magnification={52} distance={90}>
+                {project.tech.map((t) => (
+                  <DockItem
+                    key={t}
+                    className="aspect-square rounded-full bg-[rgba(237,245,255,0.75)]"
+                  >
+                    <DockLabel>{t}</DockLabel>
+                    <DockIcon>
+                      <span className="select-none font-mono text-[0.48rem] font-medium text-foreground">
+                        {abbrev(t)}
+                      </span>
+                    </DockIcon>
+                  </DockItem>
+                ))}
+              </Dock>
             </div>
 
             <ul className="project__points">
