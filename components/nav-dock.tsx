@@ -262,6 +262,26 @@ export function NavDock() {
             <Dock className="!border-none !bg-transparent !backdrop-blur-none !shadow-none !px-3 !pb-2.5 !pt-2.5 items-end flex-nowrap w-max">
               {NAV_ITEMS.map((item) => {
                 const isActive = active === item.id;
+                if (item.id === "talk") {
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="focus:outline-none"
+                      aria-label={item.title}
+                    >
+                      <DockItem className="aspect-square rounded-full transition-colors bg-[rgba(237,245,255,0.75)] hover:bg-[rgba(170,190,215,0.4)]">
+                        <DockLabel>{item.title}</DockLabel>
+                        <DockIcon>
+                          <item.icon className="h-1/2 w-1/2 text-foreground transition-transform" />
+                        </DockIcon>
+                      </DockItem>
+                    </a>
+                  );
+                }
+
                 return (
                   <button
                     key={item.id}
