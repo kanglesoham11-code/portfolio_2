@@ -151,7 +151,7 @@ const NAV_ITEMS = [
     content: (
       <div className="flex flex-col space-y-4">
         <div className="text-zinc-700 text-sm">
-          Ready to architect scalable solutions? Let's connect.
+          Ready to architect scalable solutions? Let&apos;s connect.
         </div>
         <a
           href="#contact"
