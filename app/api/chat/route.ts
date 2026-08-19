@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 import Groq from "groq-sdk";
 
-// Initialize Groq client
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY || "dummy_key_for_build",
-});
+// Groq client initialized dynamically in POST handler
 
 const SYSTEM_PROMPT = `You are "Mini Soham", a helpful, friendly, and brief AI assistant representing Soham Kangle, a Data Engineering & AI Architect. 
 Your goal is to answer questions about Soham's skills, projects, and professional background.
@@ -40,6 +37,14 @@ export async function POST(req: Request) {
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json({ error: "Invalid messages format" }, { status: 400 });
     }
+
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey || apiKey === "dummy_key_for_build") {
+      console.error("Missing GROQ_API_KEY in environment variables.");
+      return NextResponse.json({ error: "API Key not configured" }, { status: 500 });
+    }
+
+    const groq = new Groq({ apiKey });
 
     const groqResponse = await groq.chat.completions.create({
       messages: [

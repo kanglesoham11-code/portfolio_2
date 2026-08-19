@@ -125,21 +125,16 @@ export function DockItem({ className = "", isTextPill = false, children }: DockI
     [0.8, 1.5]
   );
 
-  const style = isTextPill
-    ? {
-        height: size,
-        paddingLeft: paddingX.get() + "rem", // Using raw value or transform
-        paddingRight: paddingX.get() + "rem",
-      }
-    : { width: size, height: size };
+  const paddingLeft = useTransform(paddingX, (v) => `${v}rem`);
+  const paddingRight = useTransform(paddingX, (v) => `${v}rem`);
+  const fontSizeStyle = useTransform(fontSize, (v) => `${v}rem`);
 
-  // For framer-motion to interpolate values automatically, we should pass the MotionValues directly to the style prop
   const motionStyle = isTextPill
     ? {
         height: size,
-        paddingLeft: useTransform(paddingX, (v) => `${v}rem`),
-        paddingRight: useTransform(paddingX, (v) => `${v}rem`),
-        fontSize: useTransform(fontSize, (v) => `${v}rem`),
+        paddingLeft,
+        paddingRight,
+        fontSize: fontSizeStyle,
       }
     : { width: size, height: size };
 

@@ -21,6 +21,7 @@ export function ScrollReveal({
     if (!el) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line
       setVisible(true);
       return;
     }

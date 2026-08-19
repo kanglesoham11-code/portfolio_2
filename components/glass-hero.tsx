@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 
 /* ──────────────────────── constants ──────────────────────── */
 const DESKTOP_RADIUS = 235;
@@ -24,10 +25,10 @@ export function GlassHero() {
   const frameId = useRef(0);
 
   /* ── animation loop ── */
-  const tick = useCallback(() => {
+  const tick = useCallback(function tickFn() {
     const el = revealRef.current;
     if (!el) {
-      frameId.current = requestAnimationFrame(tick);
+      frameId.current = requestAnimationFrame(tickFn);
       return;
     }
 
@@ -47,7 +48,7 @@ export function GlassHero() {
     el.style.setProperty("--reveal-y", `${smoothY.current}px`);
     el.style.setProperty("--reveal-radius", `${currentRadius.current}px`);
 
-    frameId.current = requestAnimationFrame(tick);
+    frameId.current = requestAnimationFrame(tickFn);
   }, []);
 
   /* ── pointer handlers ── */
@@ -159,7 +160,7 @@ export function GlassHero() {
       {/* 4 — Navigation */}
       <header>
         <nav className="hero__nav anim-nav" aria-label="Primary navigation">
-          <a href="/" className="hero__brand" aria-label="Soham Kangle home">
+          <Link href="/" className="hero__brand" aria-label="Soham Kangle home">
             {/* Original inline-SVG monogram: stylised "S" + "K" */}
             <span className="hero__monogram">
               <svg
@@ -189,7 +190,7 @@ export function GlassHero() {
               </svg>
             </span>
             <span className="hero__name">Soham Kangle</span>
-          </a>
+          </Link>
 
           <ul className="hero__links">
             <li>

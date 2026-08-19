@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import Link from "next/link";
+
 const NAV_LINKS = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
@@ -51,7 +53,7 @@ export function StickyNav() {
       className={`snav ${visible ? "snav--visible" : ""}`}
       aria-label="Section navigation"
     >
-      <a href="/" className="snav__brand" aria-label="Soham Kangle — home">
+      <Link href="/" className="snav__brand" aria-label="Soham Kangle — home">
         <svg
           viewBox="0 0 32 32"
           fill="none"
@@ -75,7 +77,7 @@ export function StickyNav() {
           />
           <circle cx="6" cy="27" r="1.2" fill="currentColor" />
         </svg>
-      </a>
+      </Link>
 
       <div className="snav__links">
         {NAV_LINKS.map((link) => (

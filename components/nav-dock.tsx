@@ -200,6 +200,7 @@ export function NavDock() {
 
   useEffect(() => {
     if (!widthContainer || maxWidth > 0) return;
+    // eslint-disable-next-line
     setMaxWidth(widthContainer);
   }, [widthContainer, maxWidth]);
 
