@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import "devicon/devicon.min.css";
 
 export const metadata: Metadata = {
   title: "Soham Kangle — Systems Engineer",
@@ -21,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+      </head>
       <body>{children}</body>
     </html>
   );
