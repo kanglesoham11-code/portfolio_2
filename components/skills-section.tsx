@@ -5,27 +5,12 @@ import { SectionHeader } from "./section-header";
 import { Dock, DockIcon, DockItem } from "@/components/core/dock";
 
 import {
-  SiPython,
-  SiJavascript,
-  SiTypescript,
-  SiCplusplus,
-  SiPostgresql,
-  SiMysql,
-  SiFastapi,
-  SiApachekafka,
-  SiPandas,
-  SiNumpy,
-  SiReact,
-  SiNodedotjs,
-  SiNextdotjs,
   SiStreamlit,
   SiDuckduckgo,
   SiStripe,
-  SiGit,
 } from "react-icons/si";
 
 import {
-  FaJava,
   FaDatabase,
   FaCogs,
   FaWarehouse,
@@ -53,91 +38,91 @@ const SKILLS = [
   {
     name: "Languages",
     items: [
-      { label: "Python", icon: SiPython },
-      { label: "SQL", icon: FaDatabase },
-      { label: "JavaScript", icon: SiJavascript },
-      { label: "TypeScript", icon: SiTypescript },
-      { label: "C++", icon: SiCplusplus },
-      { label: "Java", icon: FaJava },
+      { label: "Python", devicon: "devicon-python-plain colored" },
+      { label: "SQL", devicon: "devicon-azuresql-plain colored" },
+      { label: "JavaScript", devicon: "devicon-javascript-plain colored" },
+      { label: "TypeScript", devicon: "devicon-typescript-plain colored" },
+      { label: "C++", devicon: "devicon-cplusplus-plain colored" },
+      { label: "Java", devicon: "devicon-java-plain colored" },
     ],
   },
   {
     name: "Data Engineering",
     items: [
-      { label: "ETL / ELT Pipeline Design", icon: FaCogs },
-      { label: "Data Warehousing", icon: FaWarehouse },
-      { label: "Data Modeling", icon: FaSitemap },
-      { label: "Schema Design", icon: FaProjectDiagram },
-      { label: "Batch & Stream Processing", icon: FaStream },
-      { label: "Data Quality Monitoring", icon: FaCheckCircle },
+      { label: "ETL / ELT Pipeline Design", icon: FaCogs, color: "#1565C0" },
+      { label: "Data Warehousing", icon: FaWarehouse, color: "#607D8B" },
+      { label: "Data Modeling", icon: FaSitemap, color: "#FF7043" },
+      { label: "Schema Design", icon: FaProjectDiagram, color: "#8D6E63" },
+      { label: "Batch & Stream Processing", icon: FaStream, color: "#42A5F5" },
+      { label: "Data Quality Monitoring", icon: FaCheckCircle, color: "#66BB6A" },
     ],
   },
   {
     name: "Databases & Storage",
     items: [
-      { label: "PostgreSQL", icon: SiPostgresql },
-      { label: "MySQL", icon: SiMysql },
-      { label: "ChromaDB", icon: FaDatabase },
-      { label: "DynamoDB", icon: FaAws },
-      { label: "SQL Optimization", icon: FaTachometerAlt },
-      { label: "Data Lake Architecture", icon: FaWater },
+      { label: "PostgreSQL", devicon: "devicon-postgresql-plain colored" },
+      { label: "MySQL", devicon: "devicon-mysql-plain colored" },
+      { label: "ChromaDB", icon: FaDatabase, color: "#FF5722" },
+      { label: "DynamoDB", icon: FaAws, color: "#FF9900" },
+      { label: "SQL Optimization", icon: FaTachometerAlt, color: "#E53935" },
+      { label: "Data Lake Architecture", icon: FaWater, color: "#29B6F6" },
     ],
   },
   {
     name: "AWS & Cloud",
     items: [
-      { label: "Amazon S3", icon: FaAws },
-      { label: "AWS Glue", icon: FaAws },
-      { label: "Amazon Redshift", icon: FaAws },
-      { label: "AWS Lambda", icon: FaAws },
-      { label: "Amazon Athena", icon: FaAws },
-      { label: "Cloud Pipeline Automation", icon: FaCloudUploadAlt },
+      { label: "Amazon S3", devicon: "devicon-amazonwebservices-original colored" },
+      { label: "AWS Glue", devicon: "devicon-amazonwebservices-original colored" },
+      { label: "Amazon Redshift", devicon: "devicon-amazonwebservices-original colored" },
+      { label: "AWS Lambda", devicon: "devicon-amazonwebservices-original colored" },
+      { label: "Amazon Athena", devicon: "devicon-amazonwebservices-original colored" },
+      { label: "Cloud Pipeline Automation", icon: FaCloudUploadAlt, color: "#42A5F5" },
     ],
   },
   {
     name: "Frameworks & Tools",
     items: [
-      { label: "FastAPI", icon: SiFastapi },
-      { label: "Apache Kafka", icon: SiApachekafka },
-      { label: "Pandas", icon: SiPandas },
-      { label: "NumPy", icon: SiNumpy },
-      { label: "LangGraph", icon: FaProjectDiagram },
-      { label: "React", icon: SiReact },
-      { label: "Node.js", icon: SiNodedotjs },
-      { label: "Next.js", icon: SiNextdotjs },
-      { label: "Streamlit", icon: SiStreamlit },
-      { label: "OpenAI Agents SDK", icon: FaRobot },
+      { label: "FastAPI", devicon: "devicon-fastapi-plain colored" },
+      { label: "Apache Kafka", devicon: "devicon-apachekafka-original colored" },
+      { label: "Pandas", devicon: "devicon-pandas-original colored" },
+      { label: "NumPy", devicon: "devicon-numpy-original colored" },
+      { label: "LangGraph", icon: FaProjectDiagram, color: "#3F51B5" },
+      { label: "React", devicon: "devicon-react-original colored" },
+      { label: "Node.js", devicon: "devicon-nodejs-plain colored" },
+      { label: "Next.js", devicon: "devicon-nextjs-original colored" },
+      { label: "Streamlit", icon: SiStreamlit, color: "#FF4B4B" },
+      { label: "OpenAI Agents SDK", icon: FaRobot, color: "#00A67E" },
     ],
   },
   {
     name: "AI / ML",
     items: [
-      { label: "Groq LLaMA 3.3 70B", icon: FaBrain },
-      { label: "Multi-Agent Orchestration", icon: FaRobot },
-      { label: "RAG", icon: FaSearch },
-      { label: "Semantic Search", icon: FaSearch },
-      { label: "Prompt Engineering", icon: FaKeyboard },
-      { label: "ElevenLabs TTS", icon: FaVolumeUp },
+      { label: "Groq LLaMA 3.3 70B", icon: FaBrain, color: "#F55036" },
+      { label: "Multi-Agent Orchestration", icon: FaRobot, color: "#7E57C2" },
+      { label: "RAG", icon: FaSearch, color: "#26A69A" },
+      { label: "Semantic Search", icon: FaSearch, color: "#26A69A" },
+      { label: "Prompt Engineering", icon: FaKeyboard, color: "#FFCA28" },
+      { label: "ElevenLabs TTS", icon: FaVolumeUp, color: "#111111" },
     ],
   },
   {
     name: "DevOps & APIs",
     items: [
-      { label: "Git", icon: SiGit },
-      { label: "REST API Design", icon: FaPlug },
-      { label: "WebSockets", icon: FaNetworkWired },
-      { label: "DuckDuckGo API", icon: SiDuckduckgo },
-      { label: "Stripe API", icon: SiStripe },
+      { label: "Git", devicon: "devicon-git-plain colored" },
+      { label: "REST API Design", icon: FaPlug, color: "#43A047" },
+      { label: "WebSockets", icon: FaNetworkWired, color: "#FF9800" },
+      { label: "DuckDuckGo API", icon: SiDuckduckgo, color: "#DE5833" },
+      { label: "Stripe API", icon: SiStripe, color: "#008CDD" },
     ],
   },
   {
     name: "Concepts",
     items: [
-      { label: "Distributed Systems", icon: FaNetworkWired },
-      { label: "Stateful Pipeline Orchestration", icon: FaCogs },
-      { label: "Real-Time Event Processing", icon: FaBolt },
-      { label: "Semantic Search", icon: FaSearch },
-      { label: "Full-Stack Development", icon: FaLayerGroup },
+      { label: "Distributed Systems", icon: FaNetworkWired, color: "#607D8B" },
+      { label: "Stateful Pipeline Orchestration", icon: FaCogs, color: "#5C6BC0" },
+      { label: "Real-Time Event Processing", icon: FaBolt, color: "#FFCA28" },
+      { label: "Semantic Search", icon: FaSearch, color: "#26A69A" },
+      { label: "Full-Stack Development", icon: FaLayerGroup, color: "#00ACC1" },
     ],
   },
 ];
@@ -164,7 +149,11 @@ export function SkillsSection() {
                   >
                     <DockIcon>
                       <div className="flex items-center space-x-2">
-                        <item.icon className="h-[1.2em] w-[1.2em] text-foreground/80" />
+                        {item.devicon ? (
+                          <i className={`${item.devicon} text-[1.2rem]`} />
+                        ) : item.icon ? (
+                          <item.icon className="h-[1.2em] w-[1.2em]" color={item.color} />
+                        ) : null}
                         <span className="select-none font-display font-medium text-foreground">
                           {item.label}
                         </span>
