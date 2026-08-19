@@ -19,7 +19,6 @@ import {
   SiNodedotjs,
   SiNextdotjs,
   SiStreamlit,
-  SiOpenai,
   SiDuckduckgo,
   SiStripe,
   SiGit,
@@ -107,7 +106,7 @@ const SKILLS = [
       { label: "Node.js", icon: SiNodedotjs },
       { label: "Next.js", icon: SiNextdotjs },
       { label: "Streamlit", icon: SiStreamlit },
-      { label: "OpenAI Agents SDK", icon: SiOpenai },
+      { label: "OpenAI Agents SDK", icon: FaRobot },
     ],
   },
   {
