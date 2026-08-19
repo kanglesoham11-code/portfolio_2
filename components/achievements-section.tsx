@@ -136,7 +136,7 @@ export function AchievementsSection() {
         <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden">
           
           {/* Header remains fixed at the top of the viewport */}
-          <div className="absolute top-12 z-50 w-full md:top-24">
+          <div className="absolute top-12 z-50 w-full md:top-24 [&_.sh__title]:text-zinc-900 dark:[&_.sh__title]:text-white [&_.sh__sub]:text-zinc-600 dark:[&_.sh__sub]:text-zinc-400 [&_.sh__num]:text-zinc-500 dark:[&_.sh__num]:text-zinc-500">
             <SectionHeader
               number="05"
               title="Achievements"
