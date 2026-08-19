@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
 import { SectionHeader } from "./section-header";
 import { FaTrophy, FaMedal, FaStar, FaAward } from "react-icons/fa";
 
@@ -122,6 +122,12 @@ export function AchievementsSection() {
     offset: ["start start", "end end"],
   });
 
+  const smoothProgress = useSpring(scrollYProgress, {
+    mass: 0.1,
+    stiffness: 100,
+    damping: 20,
+  });
+
   return (
     <section id="journey" className="relative bg-zinc-50 dark:bg-zinc-950">
       {/* The scrollable height container (400vh for 4 items means 100vh scroll per item) */}
@@ -148,7 +154,7 @@ export function AchievementsSection() {
                 key={i}
                 achievement={achievement}
                 index={i}
-                progress={scrollYProgress}
+                progress={smoothProgress}
                 total={ACHIEVEMENTS.length}
               />
             ))}
@@ -157,7 +163,7 @@ export function AchievementsSection() {
           {/* Scroll Down Indicator */}
           <motion.div
             style={{
-              opacity: useTransform(scrollYProgress, [0, 0.05], [1, 0]),
+              opacity: useTransform(smoothProgress, [0, 0.05], [1, 0]),
             }}
             className="absolute bottom-12 flex flex-col items-center gap-2 text-zinc-400"
           >
